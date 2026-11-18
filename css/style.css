@@ -152,6 +152,25 @@ main {
   text-decoration: none;
 }
 
+.tombol.kecil {
+  padding: 2px 6px;
+  font-size: 0.1rem;
+}
+
+.tersebunyi {
+  display: none;
+}
+
+.tombol-tampilkan {
+    padding: 10px 20px;
+    background-color: #1D3557;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
 .kartu {
   background-color: var(--warna-kartu);
   padding: 1rem;

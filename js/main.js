@@ -242,3 +242,35 @@ async function ambilKeahlian() {
 if (jumlahskill) {
 	ambilKeahlian();
 }
+
+//menampilkan dan menyembunyikan daftar repositori
+const tombolTema = document.querySelector("#daftar-repo");
+const bodyHalaman = document.body;
+
+if (localStorage.getItem("repo") === "Tampilkan Repositori") {
+	bodyHalaman.classList.add("Tampilkan Repositori");
+}
+
+if (tombolTema) {
+	const perbaruiLabel = () => {
+		tombolTema.textContent = bodyHalaman.classList.contains("Tampilkan Repositori")
+			? "Sembunyikan Repositori"
+			: "Tampilkan Repositori";
+	};
+
+	perbaruiLabel();
+
+	tombolKecil.addEventListener("click", () => {
+		bodyHalaman.classList.toggle("Tampilkan Repositori");
+		localStorage.setItem(
+			"repo",
+			bodyHalaman.classList.contains("Tampilkan Repositori") ? "Tampilkan Repositori" : "Sembunyikan Repositori"
+		);
+		perbaruiLabel();
+	});
+
+			bodyHalaman.classList.contains("Tampilkan Repositori") ? "Tampilkan Repositori" : "Sembunyikan Repositori"
+;
+		perbaruiLabel();
+;
+}
