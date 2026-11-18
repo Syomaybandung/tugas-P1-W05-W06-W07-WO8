@@ -6,6 +6,7 @@ Website ini tampil rapi di ponsel, tablet, dan laptop.
 ![Tampilan beranda portofolio](img/portofolio.PNG)
 ![Tampilan beranda portofolio](img/proyek-kontak.png)
 ![Tampilkan beranda portofolio](img/P1W06_Rana_02_console.PNG)
+![Tampilan praktik pada proyek](img/proyek-ananditya.PNG)
 ## Fitur
 - Halaman **Beranda** berisi profil, hobi, cita-cita, keahlian, dan jadwal belajar
 - Halaman **Proyek** berisi daftar proyek dalam bentuk kartu

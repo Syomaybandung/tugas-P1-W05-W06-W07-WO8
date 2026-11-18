@@ -140,6 +140,7 @@ if (kontakPesan && kontakHitung) {
 		kontakHitung.textContent = `${kontakPesan.value.length}/300 karakter`;
 	});
 }
+
 // 5. Repositori GiHub terbaru (halaman Proyek)
 const alamatRepo = "https://api.github.com/users/Syomaybandung/repos?sort=updated&per_page=6";
 const daftarRepo = document.querySelector("#daftar-repo");
