@@ -96,6 +96,8 @@ if (daftarProyek && jumlahProyek) {
 			gambar.src = item.gambar;
 			gambar.alt = item.alt;
 			gambar.width = 280;
+			gambar.loading = "lazy";
+			gambar.decoding = "async";
 
 			const deskripsi = document.createElement("p");
 			deskripsi.textContent = item.deskripsi;
@@ -139,22 +141,12 @@ if (kontakPesan && kontakHitung) {
 	});
 }
 // 5. Repositori GiHub terbaru (halaman Proyek)
-const username = "Syomaybandung"; 
-const alamatRepo = `https://api.github.com/users/Syomaybandung/repos`;
-const pilihan ="?sort=updated&per_page=6";
+const alamatRepo = "https://api.github.com/users/Syomaybandung/repos?sort=updated&per_page=6";
 const daftarRepo = document.querySelector("#daftar-repo");
 const statusRepo = document.querySelector("#status-repo");
-
-async function ambilRepositori() {
-	const ressponse = await fetch(alamatRepo + pilihan);
-	const repos = await ressponse.json();
-}
-if (daftarRepo) {
-	ambilRepositori();
-}
 async function ambilRepositori() {
 	try {
-		const response = await fetch(alamatRepo + pilihan);
+		const response = await fetch(alamatRepo);
 		if (!response.ok) {
 			throw new Error(`HTTP error! status: ${response.status}`);
 		}
@@ -184,35 +176,8 @@ async function ambilRepositori() {
 	}
 }
 
-if (statusRepo) {
-	statusRepo.textContent = "Memuat repositori...";
+if (daftarRepo && statusRepo) {
 	ambilRepositori();
-}
-async function ambilRepo() {
-    statusRepo.textContent = "Memuat...";
-
-    try {
-		const response = await fetch(alamatRepo + pilihan);
-		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
-		}
-		const repos = await response.json();
-
-		repos.forEach((repo) => {
-			const item = document.createElement("li");
-			const tautan = document.createElement("a");
-			tautan.href = repo.html_url;
-            tautan.target = "_blank";
-			tautan.textContent = repo.name;
-			item.appendChild(tautan);
-			daftarRepo.appendChild(item);
-		});
-		statusRepo.textContent = `${repos.length} repository yang terakhir diperbarui:` ;
-	}
-	catch (error) {
-		statusRepo.textContent = "Maaf, daftar repository gagal memuat.Periksa username atau coba lagi.";
-		console.error(error);
-	}
 }
 
 // 1. Daftar keahlian (halaman Beranda), data dari data/keahlian.json
@@ -243,34 +208,30 @@ if (jumlahskill) {
 	ambilKeahlian();
 }
 
-//menampilkan dan menyembunyikan daftar repositori
-const tombolTema = document.querySelector("#daftar-repo");
-const bodyHalaman = document.body;
+// Menampilkan dan menyembunyikan daftar repositori
+const tombolRepo = document.querySelector("#tombol-repo");
 
-if (localStorage.getItem("repo") === "Tampilkan Repositori") {
-	bodyHalaman.classList.add("Tampilkan Repositori");
-}
+if (tombolRepo && daftarRepo && statusRepo) {
+	const tersembunyi = localStorage.getItem("repo") === "Sembunyikan Repositori";
 
-if (tombolTema) {
-	const perbaruiLabel = () => {
-		tombolTema.textContent = bodyHalaman.classList.contains("Tampilkan Repositori")
-			? "Sembunyikan Repositori"
-			: "Tampilkan Repositori";
+	const perbaruiRepositori = () => {
+		const tersembunyi = daftarRepo.hidden;
+		tombolRepo.textContent = tersembunyi
+			? "Tampilkan Repositori"
+			: "Sembunyikan Repositori";
 	};
 
-	perbaruiLabel();
+	daftarRepo.hidden = tersembunyi;
+	statusRepo.hidden = tersembunyi;
+	perbaruiRepositori();
 
-	tombolKecil.addEventListener("click", () => {
-		bodyHalaman.classList.toggle("Tampilkan Repositori");
+	tombolRepo.addEventListener("click", () => {
+		daftarRepo.hidden = !daftarRepo.hidden;
+		statusRepo.hidden = daftarRepo.hidden;
 		localStorage.setItem(
 			"repo",
-			bodyHalaman.classList.contains("Tampilkan Repositori") ? "Tampilkan Repositori" : "Sembunyikan Repositori"
+			daftarRepo.hidden ? "Sembunyikan Repositori" : "Tampilkan Repositori"
 		);
-		perbaruiLabel();
+		perbaruiRepositori();
 	});
-
-			bodyHalaman.classList.contains("Tampilkan Repositori") ? "Tampilkan Repositori" : "Sembunyikan Repositori"
-;
-		perbaruiLabel();
-;
 }
