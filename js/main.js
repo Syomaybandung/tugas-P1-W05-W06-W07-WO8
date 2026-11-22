@@ -33,6 +33,8 @@ const proyek = [
 		judul: "Halaman Profil Pertama",
 		kategori: "HTML",
 		gambar: "img/html beranda.PNG",
+		lebarGambar: 1920,
+		tinggiGambar: 1040,
 		alt: "Tangkapan layar halaman profil Ananditya Zahra",
 		deskripsi: "Halaman web pertama saya, berisi profil, hobi, cita-cita, keahlian, dan kontak.",
 	},
@@ -40,6 +42,8 @@ const proyek = [
 		judul: "Form Kontak",
 		kategori: "HTML",
 		gambar: "img/kontakhtml.PNG",
+		lebarGambar: 1920,
+		tinggiGambar: 1040,
 		alt: "Tangkapan layar form kontak",
 		deskripsi: "Form kontak dengan label dan validasi bawaan browser.",
 	},
@@ -47,6 +51,8 @@ const proyek = [
 		judul: "Tabel Jadwal Belajar",
 		kategori: "HTML",
 		gambar: "img/jadwal.PNG",
+		lebarGambar: 667,
+		tinggiGambar: 679,
 		alt: "Tangkapan layar tabel jadwal belajar mandiri",
 		deskripsi: "Jadwal belajar mingguan yang disusun menggunakan tabel HTML.",
 	},
@@ -54,6 +60,8 @@ const proyek = [
 		judul: "Kode JavaScript",
 		kategori: "JavaScript",
 		gambar: "img/P1W06_Rana_01_kode.PNG",
+		lebarGambar: 805,
+		tinggiGambar: 922,
 		alt: "Tangkapan layar kode JavaScript",
 		deskripsi: "Contoh kode JavaScript yang digunakan dalam latihan.",
 	},
@@ -61,6 +69,8 @@ const proyek = [
 		judul: "Hasil Console JavaScript",
 		kategori: "JavaScript",
 		gambar: "img/P1W06_Rana_02_console.PNG",
+		lebarGambar: 697,
+		tinggiGambar: 419,
 		alt: "Tangkapan layar hasil JavaScript di console",
 		deskripsi: "Hasil dari latihan JavaScript yang ditampilkan di console.",
 	},
@@ -68,6 +78,8 @@ const proyek = [
 		judul: "Portofolio Responsif",
 		kategori: "CSS",
 		gambar: "img/rensponsive posrto.PNG",
+		lebarGambar: 820,
+		tinggiGambar: 936,
 		alt: "Tangkapan layar halaman profil",
 		deskripsi: "Halaman profil yang menampilkan informasi pribadi dan kontak.",
 	}
@@ -81,7 +93,7 @@ if (daftarProyek && jumlahProyek) {
 	function tampilkanProyek(daftar) {
 		daftarProyek.replaceChildren();
 
-		daftar.forEach((item) => {
+		daftar.forEach((item, index) => {
 			const kartu = document.createElement("article");
 			kartu.className = "kartu";
 
@@ -95,8 +107,10 @@ if (daftarProyek && jumlahProyek) {
 			const gambar = document.createElement("img");
 			gambar.src = item.gambar;
 			gambar.alt = item.alt;
-			gambar.width = 280;
-			gambar.loading = "lazy";
+			gambar.width = item.lebarGambar;
+			gambar.height = item.tinggiGambar;
+			gambar.loading = index === 0 ? "eager" : "lazy";
+			gambar.fetchPriority = index === 0 ? "high" : "auto";
 			gambar.decoding = "async";
 
 			const deskripsi = document.createElement("p");

@@ -19,6 +19,7 @@ Website ini tampil rapi di ponsel, tablet, dan laptop.
 - Menampilkan memuat pada repository
 - Menyambungkan repository GitHub dengan poject portofolio
 - Tampilan keahlian json pada vscode dan console (network) 
+- Audit menggunakan LightHouse
 ## Teknologi
 - HTML5
 - CSS3 (Flexbox dan media query)
@@ -26,6 +27,11 @@ Website ini tampil rapi di ponsel, tablet, dan laptop.
 - JavaScript
 - JSON
 - README
+## Skor LightHouse
+- Performance   : 100;100;100;100
+- Accesbillity  : 94;96;96;95
+- Best Practices: 100;100;100;100
+-SEO            : 100;100;100;100
 ## Tautan
 - Website: menyusul setelah *deploy* ke Vercel
 - Dibuat oleh: Ananditya Zahra, SMKS BRANTAS KARANGKATES

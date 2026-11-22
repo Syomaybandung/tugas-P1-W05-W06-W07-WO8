@@ -153,8 +153,8 @@ main {
 }
 
 .tombol.kecil {
-  padding: 2px 6px;
-  font-size: 0.1rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
 }
 
 .tersebunyi {
@@ -322,6 +322,14 @@ footer a {
 
 .filter-proyek-tombol.aktif {
   background-color: var(--warna-utama);
+}
+
+.tombol-kecil {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
 }
 
 .label {
