@@ -31,7 +31,7 @@ Website ini tampil rapi di ponsel, tablet, dan laptop.
 - Performance   : 100;100;100;100
 - Accesbillity  : 94;96;96;95
 - Best Practices: 100;100;100;100
--SEO            : 100;100;100;100
+- SEO            : 100;100;100;100
 ## Tautan
 - Website: menyusul setelah *deploy* ke Vercel
 - Dibuat oleh: Ananditya Zahra, SMKS BRANTAS KARANGKATES
